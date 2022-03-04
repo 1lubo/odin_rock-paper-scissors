@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">  
     <title>Document</title>
 </head>
 <body>
+
+    <div class="scoreboard">          
+        <div class="score" id="p">
+            <p id="player">0</p>
+            <span>Player</span>
+        </div>
+        <div class="score">
+            <p id="separator"> : </p>
+        </div>
+        <div class="score" id="c">
+            <p id="computer">0</p>
+            <span>Computer</span>
+        </div>
+    </div>
+    <div id="result"></div>
+<div class="keys">
+    <div class="key">
+        <button id="rock" class="icon">&#9864;</button>
+        <span>Rock</span>
+    </div>
+    <div class="key">
+        <button id="paper" class="icon">&#x1f4dc;</button>
+        <span>Paper</span>
+    </div>
+    <div class="key">
+        <button id="scissors" class="icon">&#x2702;</button>
+        <span>Scissors</span>
+    </div>
+</div>
+<div class="reset">
+    <button id="reset">Reset</button>
+</div>
+
     <script src="myscript.js">        
     </script>
     

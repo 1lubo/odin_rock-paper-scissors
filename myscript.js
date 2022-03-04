@@ -1,3 +1,6 @@
+const playerScore = document.getElementById("player");
+const computerScore = document.getElementById("computer");
+const reset = document.getElementById("reset");
 
 let computerPlay = function(){
     const words = ['Rock', 'Paper', 'Scissors'];
@@ -6,42 +9,55 @@ let computerPlay = function(){
     return computerChoice;
 }
 
+
+
+let changeScore = function(roundResult){
+if (roundResult === "P"){
+    playerScore.innerText = parseInt(playerScore.innerText) + 1;
+    } else if (roundResult === "C"){
+        computerScore.innerText = parseInt(computerScore.innerText) + 1;
+    }
+}
+
 let playRound = function (computerC, playerC){
     
     let playerSelection = playerC.toLowerCase();
     let computerSelection = computerC.toLowerCase();
+    const result = document.getElementById("result");
+    
 
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        console.log("You win! Rock beats scissors.");
-        return 'P';
+        result.innerText = "You win! Rock beats scissors.";
+        changeScore('P');
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        console.log("You win! Paper beats rock.");
-        return 'P';
+        result.innerText = "You win! Paper beats rock.";
+        changeScore('P');
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        console.log("You win! Scissors beats paper.");
-        return 'P';
+        result.innerText = "You win! Scissors beats paper.";
+        changeScore('P');
     } else if (playerSelection === computerSelection) {
-        console.log("Draw.");
+        result.innerText = "Draw.";
         return 'D';
     } else {
-        console.log(`You lose. ${computerSelection} beats ${playerSelection}.`);
-        return "C";
+        result.innerText = `You lose. ${computerSelection} beats ${playerSelection}.`;
+        changeScore('C')
     }
 }
 
-let game = function () {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerS = prompt("Rock-Paper-Scissors. What do you choose?");
-        let result = (playRound(computerPlay(), playerS));
-        if (result === 'P') {
-            playerScore++ ;
-        } else if (result === 'C') {
-            computerScore++
-        }
-    }
-    console.log(`The final score is: Player ${playerScore} / Computer ${computerScore}`)
-}
 
-game()
+const rock = document.getElementById("rock");
+rock.addEventListener("click", function(){ playRound(computerPlay(), 'rock'); });
+
+const paper = document.getElementById("paper");
+paper.addEventListener("click", function(){ playRound(computerPlay(), 'paper'); });
+
+const scissors = document.getElementById("scissors");
+scissors.addEventListener("click", function(){ playRound(computerPlay(), 'scissors'); });
+
+reset.addEventListener("click", resetAll);
+
+function resetAll(){
+    playerScore.innerText = 0;
+    computerScore.innerText = 0;
+    result.innerText = "";
+}
